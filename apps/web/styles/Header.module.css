@@ -1,0 +1,16 @@
+@tailwind components;
+
+@layer components {
+    .header {
+        @apply relative h-96;
+    }
+    .home_header {
+        @apply relative h-screen;
+    }
+    .header_bg {
+        @apply absolute z-10 h-full w-full bg-blue-900 bg-opacity-40;
+    }
+    .header_text {
+        @apply absolute z-20 mx-0 flex h-full w-full flex-col items-center justify-center text-white;
+    }
+}

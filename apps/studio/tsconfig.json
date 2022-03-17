@@ -1,0 +1,10 @@
+{
+  "extends": "tsconfig/nextjs.json",
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "./node_modules/@sanity/base/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

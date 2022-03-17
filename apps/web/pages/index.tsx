@@ -7,14 +7,8 @@ import Layout from "Components/Layout";
 import groq from "groq";
 import { GitHub } from "Lib/GitHub";
 import SanityClient from "Lib/SanityClient";
-import { Url } from "url";
 
-export default function Home({
-  homepage,
-  profilePic,
-  skills,
-  projects,
-}: Props) {
+export default function Home({ homepage, profilePic, skills, projects }) {
   return (
     <Layout homepage={homepage} url={"/"}>
       <main>
@@ -26,28 +20,6 @@ export default function Home({
       </main>
     </Layout>
   );
-}
-
-type Skill = {
-  title: string;
-  image: string;
-  level: number;
-};
-
-type Project = {
-  name: string;
-  description: string;
-  id: string;
-  url: Url;
-  homepageUrl: Url;
-  openGraphImageUrl: Url;
-};
-
-interface Props {
-  homepage: Object;
-  profilePic: string;
-  skills: Array<Skill>;
-  projects: Array<Project>;
 }
 
 export async function getStaticProps() {

@@ -5,6 +5,7 @@ import NewSkills from "Components/NewSkills"
 import Projects from "Components/Projects"
 import Skills from "Components/Skills"
 import groq from "groq"
+import Footer from "ui/Footer"
 import { GitHub } from "ui/lib/GitHub"
 import SanityClient from "ui/lib/SanityClient"
 import { StartHeader } from "ui/StartHeader"
@@ -25,6 +26,7 @@ export default function Home({ homepage, profilePic, skills, projects }) {
         <Projects projects={projects} />
         <Contact />
       </main>
+      <Footer />
     </>
   )
 }

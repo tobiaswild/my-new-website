@@ -1,45 +1,44 @@
-import Link from "next/link";
-import styles from "Styles/Contact.module.css";
+import { useForm } from "@formspree/react"
+import styles from "Styles/Contact.module.css"
 
 export default function Contact() {
+  const [state, handleSubmit] = useForm("xqknbnwz")
+
   return (
     <section id="contact">
       <h2>Contact me</h2>
+      {state.succeeded === true ? (
+        <p className="text-center text-green-500">Thanks for you Message!</p>
+      ) : (
+        <p></p>
+      )}
       <form
-        name="contact"
-        action="https://getform.io/f/9d9c8628-8008-43df-965e-a93427ec768a"
+        className="form"
+        name="Contact"
         method="POST"
+        onSubmit={handleSubmit}
       >
-        <p className={styles.form_item}>
-          <label htmlFor="name">Name</label>
-          <br />
-          <input type="text" id="name" name="name" required />
-        </p>
-        <p className={styles.form_item}>
-          <label htmlFor="email">Email</label>
-          <br />
-          <input type="email" id="email" name="email" required />
-        </p>
-        <p className={styles.form_item}>
-          <label htmlFor="message">Message</label>
-          <br />
-          <textarea id="message" name="message" rows={4} required></textarea>
-        </p>
-        <p>
+        <div className={styles.form_item}>
+          <label htmlFor="name">Your Name</label>
+          <input type="text" id="name" name="Name" required />
+        </div>
+        <div className={styles.form_item}>
+          <label htmlFor="email">Your Email</label>
+          <input type="text" id="email" name="Email" required />
+        </div>
+        <div className={styles.form_item}>
+          <label htmlFor="message">Your Message</label>
+          <textarea id="message" name="Message" rows={5} required />
+        </div>
+        <div>
           <button
             type="submit"
-            className="mt-4 w-full rounded-xl border-none bg-primery p-1 font-bold text-white"
+            className="bg-primery mt-4 w-full rounded-xl border-none p-1 font-bold text-white"
           >
-            Send
+            Send!
           </button>
-        </p>
-        <p className={styles.or_email}>
-          or per email at{" "}
-          <Link href="mailto:hello@tobiaswild.de">
-            <a target="_blank">hello@tobiaswild.de</a>
-          </Link>
-        </p>
+        </div>
       </form>
     </section>
-  );
+  )
 }

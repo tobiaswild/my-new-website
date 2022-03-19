@@ -1,25 +1,32 @@
-import About from "Components/home/About";
-import Contact from "Components/home/Contact";
-import NewSkills from "Components/home/NewSkills";
-import Projects from "Components/home/Projects";
-import Skills from "Components/home/Skills";
-import Layout from "Components/Layout";
-import groq from "groq";
-import { GitHub } from "Lib/GitHub";
-import SanityClient from "Lib/SanityClient";
+import About from "Components/About"
+import Contact from "Components/Contact"
+import { HomeNavigation } from "Components/HomeNavigation"
+import NewSkills from "Components/NewSkills"
+import Projects from "Components/Projects"
+import Skills from "Components/Skills"
+import groq from "groq"
+import { GitHub } from "ui/lib/GitHub"
+import SanityClient from "ui/lib/SanityClient"
+import { StartHeader } from "ui/StartHeader"
 
 export default function Home({ homepage, profilePic, skills, projects }) {
   return (
-    <Layout homepage={homepage} url={"/"}>
-      <main>
+    <>
+      <HomeNavigation />
+      <StartHeader
+        sImage={homepage.image}
+        big={homepage.name}
+        small={homepage.info}
+      />
+      <main className="wrapper">
         <About homepage={homepage} profilePic={profilePic} />
         <Skills />
         <NewSkills skills={skills} />
         <Projects projects={projects} />
         <Contact />
       </main>
-    </Layout>
-  );
+    </>
+  )
 }
 
 export async function getStaticProps() {
@@ -27,11 +34,11 @@ export async function getStaticProps() {
     {
       "homepage": *[_type == "homepage"],
       "skills": *[_type == "skill"] | order(level desc, title),
-    }`;
+    }`
 
-  const data = await SanityClient.fetch(query);
-  const user = await GitHub();
-  const pinnedItems = user.pinnedItems.edges.map((edge) => edge.node);
+  const data = await SanityClient.fetch(query)
+  const user = await GitHub()
+  const pinnedItems = user.pinnedItems.edges.map((edge) => edge.node)
 
   return {
     props: {
@@ -40,5 +47,6 @@ export async function getStaticProps() {
       projects: pinnedItems,
       profilePic: user.avatarUrl,
     },
-  };
+    revalidate: 24 * 60 * 60,
+  }
 }

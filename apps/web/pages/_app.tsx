@@ -1,5 +1,5 @@
-import "Styles/style.css";
+import "Styles/style.css"
 
 export default function MyApp({ Component, pageProps, router }) {
-  return <Component {...pageProps} key={router.route} />;
+  return <Component {...pageProps} key={router.route} />
 }

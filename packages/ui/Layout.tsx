@@ -1,25 +1,19 @@
-import Footer from "Components/Footer";
-import HomeHeader from "../../apps/web/components/header/HomeHeader";
-import BasicMeta from "../../apps/web/components/meta/BasicMeta";
-import HomeNavigation from "../../apps/web/components/navigation/HomeNavigation";
-import Navigation from "../../apps/web/components/navigation/Navigation";
+import { PropsWithChildren } from "react"
+import Footer from "./Footer"
+import BasicMeta from "./meta/BasicMeta"
+import Navigation from "./Navigation"
 
-export default function Layout({ children, homepage, url }) {
+interface Props {
+  url: string
+}
+
+export default function Layout(props: PropsWithChildren<Props>) {
   return (
     <>
-      <BasicMeta url={url} />
-      {(homepage && (
-        <>
-          <HomeNavigation />
-          <HomeHeader
-            imageUrl={homepage.image}
-            text={homepage.name}
-            desc={homepage.info}
-          />
-        </>
-      )) || <Navigation />}
-      <div className="wrapper">{children}</div>
+      <BasicMeta url={props.url} />
+      <Navigation />
+      <div className="wrapper">{props.children}</div>
       <Footer />
     </>
-  );
+  )
 }

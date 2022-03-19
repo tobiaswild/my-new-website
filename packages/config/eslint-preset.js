@@ -5,7 +5,4 @@ module.exports = {
       rootDir: ["apps/*/", "packages/*/"],
     },
   },
-  rules: {
-    "react/jsx-key": "off",
-  },
-};
+}

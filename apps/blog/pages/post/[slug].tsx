@@ -3,8 +3,8 @@ import groq from "groq"
 import Link from "next/link"
 import Header from "ui/Header"
 import Layout from "ui/Layout"
-import { convertTime } from "ui/lib/convertTime"
-import SanityClient from "ui/lib/SanityClient"
+import { convertTime } from "../../packages/lib/convertTime"
+import SanityClient from "../../packages/lib/SanityClient"
 
 export default function Post({ post }) {
   return (
@@ -14,7 +14,7 @@ export default function Post({ post }) {
         text={post.title}
         desc={postInfo({ post })}
       />
-      <main className="px-4 py-2">
+      <main className="sanityText">
         <PortableText value={post.body} />
       </main>
     </Layout>

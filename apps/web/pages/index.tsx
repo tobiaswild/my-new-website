@@ -5,25 +5,46 @@ import NewSkills from "Components/NewSkills"
 import Projects from "Components/Projects"
 import Skills from "Components/Skills"
 import groq from "groq"
+import { GitHub } from "lib/GitHub"
+import SanityClient from "lib/SanityClient"
 import Footer from "ui/Footer"
-import { GitHub } from "ui/lib/GitHub"
-import SanityClient from "ui/lib/SanityClient"
 import { StartHeader } from "ui/StartHeader"
 
-export default function Home({ homepage, profilePic, skills, projects }) {
+type Hompage = {
+  name: string
+  image: string
+  info: string
+}
+
+type Skill = {
+  title: string
+  image: string
+  level: number
+}
+
+type Project = {}
+
+interface Props {
+  homepage: Hompage
+  profilePic: URL
+  skills: Array<Skill>
+  projects: Array<Project>
+}
+
+export default function Home(props: Props) {
   return (
     <>
       <HomeNavigation />
       <StartHeader
-        sImage={homepage.image}
-        big={homepage.name}
-        small={homepage.info}
+        sImage={props.homepage.image}
+        big={props.homepage.name}
+        small={props.homepage.info}
       />
       <main className="wrapper">
-        <About homepage={homepage} profilePic={profilePic} />
+        <About homepage={props.homepage} profilePic={props.profilePic} />
         <Skills />
-        <NewSkills skills={skills} />
-        <Projects projects={projects} />
+        <NewSkills skills={props.skills} />
+        <Projects projects={props.projects} />
         <Contact />
       </main>
       <Footer />

@@ -1,6 +1,6 @@
-import Link from "next/link"
 import { PropsWithChildren } from "react"
-import { NormalImage, SanityImage } from "./Images"
+import { LinkButton } from "ui/Button"
+import { CorrectImage } from "./Images"
 
 interface Props {
   imageUrl: string
@@ -12,34 +12,31 @@ interface Props {
 
 export function Card(props: Props) {
   return (
-    <div className="relative mx-auto flex w-full flex-col overflow-hidden rounded-2xl bg-gray-200 shadow-xl dark:bg-gray-800">
-      <figure className="relative h-48 bg-gray-100 dark:bg-gray-900">
-        {(props.type === "project" && (
-          <NormalImage imageUrl={props.imageUrl} alt={props.title} />
-        )) || <SanityImage imageUrl={props.imageUrl} alt={props.title} />}
-      </figure>
-      <div className="flex flex-auto flex-col gap-2 p-8">
-        <h2 className="flex items-center gap-2 text-xl font-semibold leading-7">
-          {props.title}
-        </h2>
-        <p>{props.preview}</p>
-        <div className="flex items-start justify-end gap-2">
-          {(props.type === "project" && (
-            <Link href={props.link} passHref>
-              <a
-                className="bg-primery justify-end rounded-md p-2 text-white"
-                target={"_blank"}
-              >
+    <div className="shadow-xll group space-x-6 rounded-xl bg-gray-200 bg-opacity-50 p-1 hover:rounded-2xl dark:bg-gray-800 sm:flex">
+      <div className="relative h-56 w-full object-cover object-top transition duration-500 group-hover:rounded-xl sm:h-full sm:w-5/12">
+        <CorrectImage
+          imageUrl={props.imageUrl}
+          alt={props.title}
+          clsName={"rounded-lg"}
+        />
+      </div>
+      <div className="p-5 pl-0 sm:w-7/12">
+        <div className="space-y-2">
+          <div className="space-y-4">
+            <h4 className="text-2xl font-semibold">{props.title}</h4>
+            <p>{props.preview}</p>
+          </div>
+          <div className="space-y-4">
+            {props.type === "post" ? (
+              <LinkButton link={`/post/${props.link}`} target={"_blank"}>
                 Go to the {props.type}
-              </a>
-            </Link>
-          )) || (
-            <Link href={`/post/${props.link}`} passHref>
-              <a className="bg-primery justify-end rounded-md p-2 text-white">
+              </LinkButton>
+            ) : (
+              <LinkButton link={`${props.link}`} target={"_blank"}>
                 Go to the {props.type}
-              </a>
-            </Link>
-          )}
+              </LinkButton>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useForm } from "@formspree/react"
-import styles from "Styles/Contact.module.css"
+import styles from "../../../packages/styles/Contact.module.css"
 
 export default function Contact() {
   const [state, handleSubmit] = useForm("xqknbnwz")

@@ -13,11 +13,19 @@
   body {
     @apply dark:bg-dark scroll-smooth dark:text-white;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mb-2;
+  }
   h1 {
     @apply text-5xl font-bold;
   }
   h2 {
-    @apply mb-2 text-center text-4xl font-semibold;
+    @apply text-center text-4xl font-semibold;
   }
   h3 {
     @apply text-center text-3xl font-medium;
@@ -46,8 +54,18 @@
     @apply tablet:w-4xl mx-auto max-w-[85%];
   }
 
-  .footer-link {
-    @apply text-primery m-1 p-1 font-medium;
+  .sanityText {
+    @apply px-4 py-2;
+  }
+
+  .sanityText h1 {
+    @apply text-4xl font-bold;
+  }
+  .sanityText h2 {
+    @apply text-3xl font-semibold;
+  }
+  .sanityText h3 {
+    @apply text-2xl font-medium;
   }
 }
 

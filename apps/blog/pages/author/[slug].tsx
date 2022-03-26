@@ -1,14 +1,14 @@
 import { PortableText } from "@portabletext/react"
 import groq from "groq"
+import SanityClient from "lib/SanityClient"
 import Header from "ui/Header"
 import Layout from "ui/Layout"
-import SanityClient from "ui/lib/SanityClient"
 
 export default function Post({ author }) {
   return (
     <Layout url={`/author/${author.slug.current}`}>
       <Header imageUrl={author.image} text={author.name} desc={""} />
-      <main className="px-4 py-2">
+      <main className="sanityText">
         <PortableText value={author.bio} />
       </main>
     </Layout>

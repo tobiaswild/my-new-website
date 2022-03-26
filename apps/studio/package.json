@@ -1,18 +1,5 @@
 {
-  "name": "studio",
-  "private": true,
-  "version": "1.0.0",
-  "description": "",
-  "main": "package.json",
   "author": "Tobias Wild <tobias.m.wild@gmail.com>",
-  "license": "UNLICENSED",
-  "scripts": {
-    "dev": "sanity start",
-    "build": "sanity build"
-  },
-  "keywords": [
-    "sanity"
-  ],
   "dependencies": {
     "@sanity/base": "^2.27.1",
     "@sanity/core": "^2.27.0",
@@ -30,5 +17,18 @@
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {}
+  "description": "",
+  "devDependencies": {},
+  "keywords": [
+    "sanity"
+  ],
+  "license": "UNLICENSED",
+  "main": "package.json",
+  "name": "studio",
+  "private": true,
+  "scripts": {
+    "build": "sanity build",
+    "dev": "sanity start"
+  },
+  "version": "1.0.0"
 }

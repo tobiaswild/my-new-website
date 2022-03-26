@@ -1,4 +1,5 @@
 import { PortableText } from "@portabletext/react"
+import { LinkButton } from "ui/Button"
 import { NormalImage } from "ui/Images"
 
 export default function About({ homepage, profilePic }) {
@@ -14,6 +15,9 @@ export default function About({ homepage, profilePic }) {
           />
         </div>
         <PortableText value={homepage.description} />
+      </div>
+      <div className="mt-3">
+        <LinkButton link={"https://tobiaswild.de"}>My Blog</LinkButton>
       </div>
     </section>
   )

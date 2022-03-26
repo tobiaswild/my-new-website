@@ -1,12 +1,12 @@
-import Layout from "ui/Layout"
-import { Card, CardGrid } from "ui/Card"
 import groq from "groq"
-import { convertTime } from "ui/lib/convertTime"
-import SanityClient from "ui/lib/SanityClient"
+import { convertTime } from "lib"
+import SanityClient from "lib/SanityClient"
+import { Card, CardGrid } from "ui/Card"
+import Layout from "ui/Layout"
 
 export default function posts({ posts }) {
   return (
-    <Layout url={"/blog"}>
+    <Layout url={"/"}>
       <section className="mt-3">
         <h2 className="text-center">My Blog</h2>
         <CardGrid>

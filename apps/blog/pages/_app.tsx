@@ -1,5 +1,10 @@
-import "../styles/style.css"
+import { PageTransition } from "ui/PageTransition"
+import "../../../packages/styles/style.css"
 
-export default function MyApp({ Component, pageProps, router }) {
-  return <Component {...pageProps} key={router.route} />
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <PageTransition>
+      <Component {...pageProps} />
+    </PageTransition>
+  )
 }

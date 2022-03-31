@@ -1,46 +1,30 @@
 import Image from "next/image"
 import { urlFor } from "../lib/urlFor"
 
-interface Props {
-  imageUrl: string
+interface NormalProps {
+  imageUrl: URL
   alt: string
   clsName?: string
 }
 
-export function CorrectImage(props: Props) {
-  if (props.imageUrl.startsWith("http")) {
-    return (
-      <NormalImage
-        imageUrl={props.imageUrl}
-        alt={props.alt}
-        clsName={props.clsName}
-      />
-    )
-  } else {
-    return (
-      <SanityImage
-        imageUrl={props.imageUrl}
-        alt={props.alt}
-        clsName={props.clsName}
-      />
-    )
-  }
-}
-
-export function NormalImage(props: Props) {
-  if (props.imageUrl === undefined) return null
+export function NormalImage(props: NormalProps) {
   return (
     <Image
       layout="fill"
       className={`absolute object-cover ${props.clsName}`}
-      src={props.imageUrl}
+      src={props.imageUrl.toString()}
       alt={props.alt}
     />
   )
 }
 
-export function SanityImage(props: Props) {
-  if (props.imageUrl === undefined) return null
+interface SanityProps {
+  imageUrl: string
+  alt: string
+  clsName?: string
+}
+
+export function SanityImage(props: SanityProps) {
   return (
     <Image
       layout="fill"

@@ -13,29 +13,8 @@
   body {
     @apply dark:bg-dark scroll-smooth dark:text-white;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply mb-2;
-  }
-  h1 {
-    @apply text-5xl font-bold;
-  }
-  h2 {
-    @apply text-center text-4xl font-semibold;
-  }
-  h3 {
-    @apply text-center text-3xl font-medium;
-  }
   a {
     @apply text-blue-500 hover:cursor-pointer;
-  }
-
-  section {
-    @apply mx-auto scroll-mt-5 py-12;
   }
 
   ::-webkit-scrollbar {
@@ -51,7 +30,19 @@
 
 @layer components {
   .wrapper {
-    @apply tablet:w-4xl mx-auto max-w-[85%];
+    @apply w-4xl mx-auto max-w-[85%];
+  }
+
+  .section {
+    @apply mx-auto scroll-mt-5 py-12;
+  }
+
+  .section-header {
+    @apply text-center text-4xl font-semibold;
+  }
+
+  .sub-section-header {
+    @apply text-center text-3xl font-medium;
   }
 
   .sanityText {

@@ -18,10 +18,6 @@ module.exports = {
         "4xl": "56rem",
       },
     },
-    screens: {
-      tablet: "640px",
-      desktop: "1248px",
-    },
   },
   plugins: [],
 }

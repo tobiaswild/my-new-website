@@ -1,6 +1,6 @@
 import About from "Components/About"
 import Contact from "Components/Contact"
-import { HomeNavigation } from "Components/HomeNavigation"
+import HomeNavigation from "Components/HomeNavigation"
 import NewSkills from "Components/NewSkills"
 import Projects from "Components/Projects"
 import Skills from "Components/Skills"
@@ -20,6 +20,7 @@ type Skill = {
   title: string
   image: string
   level: number
+  current: boolean
 }
 
 type Project = {}
@@ -32,6 +33,13 @@ interface Props {
 }
 
 export default function Home(props: Props) {
+  const bestSkills = []
+  props.skills.forEach((element) => {
+    if (element.current) {
+      bestSkills.push(element)
+    }
+  })
+
   return (
     <>
       <HomeNavigation />
@@ -40,10 +48,11 @@ export default function Home(props: Props) {
         big={props.homepage.name}
         small={props.homepage.info}
       />
-      <main className="wrapper">
+      <main>
         <About homepage={props.homepage} profilePic={props.profilePic} />
         <Skills />
         <NewSkills skills={props.skills} />
+        <NewSkills skills={bestSkills} />
         <Projects projects={props.projects} />
         <Contact />
       </main>
@@ -56,7 +65,7 @@ export async function getStaticProps() {
   const query = groq`
     {
       "homepage": *[_type == "homepage"],
-      "skills": *[_type == "skill"] | order(level desc, title),
+      "skills": *[_type == "skill"] | order(index),
     }`
 
   const data = await SanityClient.fetch(query)

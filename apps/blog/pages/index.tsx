@@ -1,18 +1,18 @@
 import groq from "groq"
 import { convertTime } from "lib"
 import SanityClient from "lib/SanityClient"
-import { Card, CardGrid } from "ui/Card"
+import { CardGrid, PostCard } from "ui/Cards"
 import Layout from "ui/Layout"
 
 export default function posts({ posts }) {
   return (
     <Layout url={"/"}>
-      <section className="mt-3">
-        <h2 className="text-center">My Blog</h2>
+      <section className="section">
+        <h2 className="section-header">My Blog</h2>
         <CardGrid>
           {posts &&
             posts.map((post, index) => (
-              <Card
+              <PostCard
                 key={index}
                 imageUrl={post.mainImage}
                 title={post.title}
@@ -20,7 +20,6 @@ export default function posts({ posts }) {
                   post.publishedAt
                 )}\n${post.preview}`}
                 link={post.slug.current}
-                type="post"
               />
             ))}
         </CardGrid>

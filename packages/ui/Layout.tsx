@@ -11,7 +11,7 @@ export default function Layout(props: PropsWithChildren<Props>) {
     <>
       {/* <BasicMeta url={props.url} /> */}
       <Navigation />
-      <div className="wrapper">{props.children}</div>
+      <main className="wrapper">{props.children}</main>
       <Footer />
     </>
   )

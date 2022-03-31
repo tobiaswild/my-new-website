@@ -13,7 +13,7 @@ export default function Navigation() {
 
   return (
     <nav className="dark:bg-dark fixed top-0 z-50 w-screen overflow-hidden bg-white transition-colors">
-      <div className="tablet:w-4xl mx-auto flex max-w-[95%] flex-row justify-between">
+      <div className="w-4xl mx-auto flex max-w-[95%] flex-row justify-between">
         <Link href="/" passHref>
           <a className="m-2 items-center p-2 text-2xl text-black dark:text-white">
             Tobias Wild
@@ -23,8 +23,8 @@ export default function Navigation() {
           {nav.map((card, index) => (
             <Link key={index} href={card.link} passHref>
               <a className="m-2 flex h-10 w-auto max-w-sm items-center rounded p-2 text-black dark:text-white">
-                <span className="tablet:hidden text-xl">{card.icon}</span>
-                <span className="tablet:block hidden">{card.name}</span>
+                <span className="text-xl sm:hidden">{card.icon}</span>
+                <span className="hidden sm:block">{card.name}</span>
               </a>
             </Link>
           ))}

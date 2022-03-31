@@ -13,7 +13,7 @@ export function StartHeader(props: Props) {
       <div className="absolute z-10 h-full w-full bg-blue-900 bg-opacity-40"></div>
       <SanityImage imageUrl={props.sImage} alt={props.alt} />
       <div className="absolute z-20 mx-0 flex h-full w-full flex-col items-center justify-center text-white">
-        <h1 className="mb-2">{props.big}</h1>
+        <h1 className="mb-2 text-5xl font-bold">{props.big}</h1>
         <p>{props.small}</p>
       </div>
     </header>
